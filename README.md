@@ -48,8 +48,8 @@ cd deg-analysis-pipeline
 python DEG.py
 
 # Follow the interactive prompts to:
-# 1. Upload your expression data (CSV format)
-# 2. Upload sample metadata (CSV format)
+# 1. Upload your expression data (tsv format)
+# 2. Upload sample metadata (tsv format)
 # 3. Configure analysis parameters
 ```
 
@@ -118,8 +118,8 @@ The pipeline generates a comprehensive output directory with all results organiz
 
 ### Input Requirements
 
-- **Expression Data**: CSV file with genes as rows and samples as columns
-- **Metadata**: CSV file with sample information and group assignments
+- **Expression Data**: tsv file with genes as rows and samples as columns
+- **Metadata**: tsv file with sample information and group assignments
 - **Format**: Standard RNA-seq count data or normalized expression values
 
 ### Pipeline Initialization
