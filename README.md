@@ -30,29 +30,48 @@ Designed for researchers, students, and bioinformaticians interested in transcri
 ### Prerequisites
 
 ```bash
-# Required Python packages
-pip install pandas numpy scipy matplotlib seaborn gseapy openpyxl
+# Core required packages
+pip install pandas numpy scipy matplotlib seaborn statsmodels
+
+# Optional but recommended (for GSEA analysis)
+pip install gseapy mygene openpyxl
 ```
 
-### Basic Usage
+### Option 1: Python Script (DEG.py)
 
 ```python
 # Clone the repository
 git clone https://github.com/engkinandatama/deg-analysis-pipeline.git
 cd deg-analysis-pipeline
 
-# Run the analysis (example)
-python deg_analysis.py --input your_expression_data.csv --metadata sample_metadata.csv
+# Run the Python script
+python DEG.py
+
+# Follow the interactive prompts to:
+# 1. Upload your expression data (CSV format)
+# 2. Upload sample metadata (CSV format)
+# 3. Configure analysis parameters
 ```
 
-### Google Colab
+### Option 2: Jupyter Notebook (DEG.ipynb)
+
+```python
+# Launch Jupyter Notebook
+jupyter notebook DEG.ipynb
+
+# Or use Jupyter Lab
+jupyter lab DEG.ipynb
+```
+
+### Option 3: Google Colab
 
 ```python
 # Install dependencies in Colab
-!pip install gseapy openpyxl
+!pip install gseapy mygene openpyxl
 
-# Upload your data files and run the pipeline
-# Detailed instructions in the notebook
+# Upload DEG.ipynb to Google Colab
+# Upload your data files when prompted
+# Run cells sequentially
 ```
 
 ## 📁 Output Structure
@@ -61,20 +80,41 @@ The pipeline generates a comprehensive output directory with all results organiz
 
 ```
 📂 DEG_analysis_YYYYMMDD_HHMMSS/
-├── 📄 PROJECT_REPORT.md                    # Auto-generated summary report
-├── 📊 DEG_analysis_complete.xlsx           # All results in Excel format
-├── 📂 GSEA_results/
-│   ├── KEGG_2021_Human_enrichment.tsv     # KEGG pathway enrichment
+├── 📊 Analysis Results
+│   ├── 02_DEG_results_complete.tsv        # Complete DEG analysis results
+│   ├── 03_DEG_significant_genes.tsv       # Significant genes only
+│   ├── 06_heatmap_gene_list.tsv          # Genes used in heatmap
+│   └── 09_analysis_summary.txt           # Text summary report
+│
+├── 📋 Gene Lists
+│   ├── gene_lists_all_significant.txt     # All significant genes
+│   ├── gene_lists_upregulated.txt        # Upregulated genes only
+│   ├── gene_lists_downregulated.txt      # Downregulated genes only
+│   └── ranked_gene_list.rnk              # Ranked gene list for GSEA
+│
+├── 📁 Export Files
+│   ├── expression_significant_genes.tsv   # Expression data for significant genes
+│   ├── sample_metadata.tsv               # Sample information
+│   └── DEG_analysis_complete.xlsx        # Complete results in Excel format
+│
+├── 📂 GSEA_results/                       # GSEA enrichment analysis
+│   ├── KEGG_2021_Human_enrichment.tsv    # KEGG pathway enrichment
 │   └── GO_Biological_Process_2023_enrichment.tsv  # GO term enrichment
-├── 📋 gene_lists_all_significant.txt       # List of significant genes
-├── 📈 ranked_gene_list.rnk                # Ranked gene list for GSEA
-└── 📂 plots/
-    ├── 01_volcano_plot.png                # Volcano plot visualization
-    ├── 02_heatmap_top_genes.png           # Heatmap of top DEGs
-    └── 07_enrichment_summary.png          # Enrichment analysis summary
+│
+└── 📂 Visualizations
+    ├── 01_exploratory_analysis.png       # Initial data exploration
+    ├── 04_volcano_plot.png               # Volcano plot visualization
+    ├── 05_heatmap_top_genes.png          # Heatmap of top DEGs
+    ├── 07_enrichment_summary.png         # GSEA results summary
+    └── 08_analysis_summary.png           # Summary plots and metrics
 ```
 
 ## 📖 Documentation
+
+### Pipeline Components
+
+- **DEG.py** - Standalone Python script for automated analysis
+- **DEG.ipynb** - Interactive Jupyter notebook with step-by-step guidance
 
 ### Input Requirements
 
@@ -82,10 +122,24 @@ The pipeline generates a comprehensive output directory with all results organiz
 - **Metadata**: CSV file with sample information and group assignments
 - **Format**: Standard RNA-seq count data or normalized expression values
 
+### Pipeline Initialization
+
+The pipeline automatically sets up the analysis environment:
+
+```python
+# Automatic setup includes:
+# - Import required libraries (pandas, numpy, scipy, matplotlib, seaborn)
+# - Check for optional packages (gseapy, mygene)
+# - Create timestamped output directory
+# - Configure plotting parameters
+# - Initialize analysis logging
+```
+
 ### Key Parameters
 
 - **Log2 Fold Change Threshold**: Default ±1.0
 - **P-value Cutoff**: Default 0.05 (FDR corrected)
+- **Statistical Test**: Welch's t-test or Mann-Whitney U
 - **Enrichment Databases**: GO Biological Process, KEGG Pathways
 - **Visualization**: Customizable color schemes and themes
 
@@ -107,7 +161,16 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 ```bash
 git clone https://github.com/engkinandatama/deg-analysis-pipeline.git
 cd deg-analysis-pipeline
-pip install -r requirements.txt
+
+# Install core dependencies
+pip install pandas numpy scipy matplotlib seaborn statsmodels
+
+# Install optional dependencies for full functionality
+pip install gseapy mygene openpyxl
+
+# Choose your preferred method:
+# 1. Run the Python script: python DEG.py
+# 2. Open Jupyter notebook: jupyter notebook DEG.ipynb
 ```
 
 ## 📜 License
