@@ -1,0 +1,34 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Colab temporary/session files
+*.csv
+*.tsv
+*.rnk
+*.xlsx
+*.pdf
+*.png
+*.svg
+*.md.html
+
+# Custom output folder (adjust if needed)
+DEG_analysis_*/
+
+# Environment/config files (optional)
+.env
+*.log
