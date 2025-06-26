@@ -64,7 +64,7 @@ jupyter lab DEG.ipynb
 ```
 
 ### Option 3: Google Colab
-
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/engkinandatama/deg-analysis-pipeline/blob/main/DEG.ipynb)
 ```python
 # Install dependencies in Colab
 !pip install gseapy mygene openpyxl
