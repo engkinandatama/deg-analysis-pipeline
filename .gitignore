@@ -11,6 +11,7 @@ DEG_analysis_*/
 
 # Specific output files that might be generated in root
 *.tsv
+*.tsv.gz
 *.xlsx
 *.rnk
 gene_lists_*.txt
