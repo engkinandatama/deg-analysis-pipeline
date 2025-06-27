@@ -1,0 +1,10 @@
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+scipy>=1.7.0
+statsmodels>=0.13.0
+gseapy>=1.0.0
+mygene>=3.2.2
+openpyxl>=3.0.10  # Required for Excel export
+notebook>=6.4.0  # For local use of .ipynb
